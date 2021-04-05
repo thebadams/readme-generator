@@ -1,8 +1,9 @@
 // TODO: Include packages needed for this application
 import fs from "fs";
 import inquirer from "inquirer";
+import {generateMarkdown} from "./utils/generateMarkdown.js"
 
-console.log(inquirer)
+console.log(generateMarkdown)
 
 // TODO: Create an array of questions for user input
 //sections: Description, Table of Contents, Installation, Usage, License, Contributing, Tests, Questions

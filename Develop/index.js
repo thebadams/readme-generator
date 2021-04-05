@@ -2,9 +2,9 @@
 import fs from "fs";
 import inquirer from "inquirer";
 import {generateMarkdown} from "./utils/generateMarkdown.js"
-import * as classes from "./utils/classes.js"
+import {ReadmeInfo, Author, Instructions} from "./utils/classes.js"
 
-console.log(classes)
+
 
 // TODO: Create an array of questions for user input
 //sections: Description, Table of Contents, Installation, Usage, License, Contributing, Tests, Questions

@@ -2,7 +2,7 @@
 import fs from "fs";
 import inquirer from "inquirer";
 import {generateMarkdown} from "./utils/generateMarkdown.js"
-import {ReadmeInfo, Author, Instructions} from "./utils/classes.js"
+import {ReadmeInfo, Author, Instructions, Description} from "./utils/classes.js"
 import {licenses} from "./utils/licenses.js"
 
 

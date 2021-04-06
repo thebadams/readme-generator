@@ -25,6 +25,16 @@ class Instructions {
     }
 }
 
+class Description {
+    constructor(tDescription, tMotivation, tWhy, tSolves, tLearned){
+        this.description = tDescription,
+        this.motivation = tMotivation,
+        this.why = tWhy,
+        this.solves = tSolves,
+        this.learned = tLearned 
+    }
+}
+
 class License {
     constructor(tName, tBadgeURL, tLinkURL, tContent, tValue = this){
         this.name = tName,
@@ -35,4 +45,4 @@ class License {
         this.short = tName
     }
 }
-export {ReadmeInfo, Author, Instructions, License}
+export {ReadmeInfo, Author, Instructions, License, Description}

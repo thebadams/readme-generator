@@ -102,7 +102,13 @@ const question12 = {
     message: "Please choose a license from these choices." 
 }
 
-const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12];
+const question13 = {
+    type: "editor",
+    name: "appInstallation",
+    message: "Please use the text editor to input the steps that should be taken for installation"
+}
+
+const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13];
 
 
 // TODO: Create a function to write README file
@@ -111,7 +117,7 @@ function writeToFile(fileName, data) {}
 // TODO: Create a function to initialize app
 function init(questions) {
     inquirer
-        .prompt(questions).then((data)=>console.log(data.appLicense));
+        .prompt(questions).then((data)=>console.log(data));
 }
 
 // Function call to initialize app

@@ -41,7 +41,7 @@ const question4 = {
     name: "authorEmail",
     message: "What is your e-mail address?"
 }
-
+//questions 5-9: determine "Description" of app in readme
 //question 5: input determines description of the application
 
 const question5 = {
@@ -67,7 +67,20 @@ const question8 = {
     name: "appSolve",
     message: "What problem did this application aim to solve?"
 }
-const questions = [question1, question2, question3, question4, question5, question6, question7, question8];
+
+const question9 = {
+    type: "input",
+    name: "appLessons",
+    message: "What did you learn by developming this application?"
+}
+
+
+
+//app deployment and repo information
+
+
+const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9];
+
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}

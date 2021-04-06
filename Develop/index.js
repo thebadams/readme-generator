@@ -105,10 +105,16 @@ const question12 = {
 const question13 = {
     type: "editor",
     name: "appInstallation",
-    message: "Please use the text editor to input the steps that should be taken for installation"
+    message: "Please use the text editor to input the steps that should be taken for installation."
 }
 
-const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13];
+const question14 = {
+    type: "editor",
+    name: "appUsage",
+    message: "Please use the text editor to explain the steps that should be taken to use the application."
+}
+
+const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14];
 
 
 // TODO: Create a function to write README file

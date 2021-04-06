@@ -71,15 +71,19 @@ const question8 = {
 const question9 = {
     type: "input",
     name: "appLessons",
-    message: "What did you learn by developming this application?"
+    message: "What did you learn by developing this application?"
 }
 
 
 
 //app deployment and repo information
 
-
-const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9];
+const question10 = {
+    type: "input",
+    name: "appRepo",
+    message: "Please input the URL for the application's repository."
+}
+const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
 
 
 // TODO: Create a function to write README file

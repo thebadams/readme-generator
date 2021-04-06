@@ -3,6 +3,7 @@ import fs from "fs";
 import inquirer from "inquirer";
 import {generateMarkdown} from "./utils/generateMarkdown.js"
 import {ReadmeInfo, Author, Instructions} from "./utils/classes.js"
+import {licenses} from "./utils/licenses.js"
 
 
 
@@ -96,7 +97,7 @@ const question11 = {
 const question12 = {
     type: "list",
     name: "appLicense",
-    choices: ["none", "Apache License 2.0,", "GNU General Public License v3.0", "MIT License"],
+    choices: licenses,
     default: 0,
     message: "Please choose a license from these choices." 
 }
@@ -110,7 +111,7 @@ function writeToFile(fileName, data) {}
 // TODO: Create a function to initialize app
 function init(questions) {
     inquirer
-        .prompt(questions).then((data)=>console.log(data));
+        .prompt(questions).then((data)=>console.log(data.appLicense));
 }
 
 // Function call to initialize app

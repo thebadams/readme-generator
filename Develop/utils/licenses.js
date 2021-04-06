@@ -74,4 +74,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <http://unlicense.org/>`)
 
-export const licenses = [noLicense, apacheLicense, GNUGPL3, IBMLicense, ISCLicense, MITLicense, unlicense];
+const licenses = [noLicense, apacheLicense, GNUGPL3, IBMLicense, ISCLicense, MITLicense, unlicense];
+
+export {licenses};

@@ -26,11 +26,13 @@ class Instructions {
 }
 
 class License {
-    constructor(tName, tBadgeURL, tLinkURL, tContent){
+    constructor(tName, tBadgeURL, tLinkURL, tContent, tValue = this){
         this.name = tName,
         this.badgeURL = tBadgeURL,
         this.linkURL = tLinkURL,
-        this.content = tContent
+        this.content = tContent,
+        this.value = tValue,
+        this.short = tName
     }
 }
 export {ReadmeInfo, Author, Instructions, License}

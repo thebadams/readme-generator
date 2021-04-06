@@ -55,7 +55,13 @@ const question6 = {
     name: "appMotivation",
     message: "What was your motivation for developing this application?"
 }
-const questions = [question1, question2, question3, question4, question5, question6];
+
+const question7 = {
+    type: "input",
+    name: "appWhy",
+    message: "Why did you decide to build this application?"
+}
+const questions = [question1, question2, question3, question4, question5, question6, question7];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}

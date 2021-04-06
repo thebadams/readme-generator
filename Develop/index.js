@@ -91,7 +91,17 @@ const question11 = {
     message: "Please input the URL where the application has been deployed."
 }
 
-const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11];
+//create license information choices
+//TODO: build out license objects
+const question12 = {
+    type: "list",
+    name: "appLicense",
+    choices: ["none", "Apache License 2.0,", "GNU General Public License v3.0", "MIT License"],
+    default: 0,
+    message: "Please choose a license from these choices." 
+}
+
+const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12];
 
 
 // TODO: Create a function to write README file

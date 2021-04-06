@@ -21,12 +21,19 @@ const question1 = {
     message: "What is the name of your Application?"
 }
 
+//question 2: input determines author's name
 const question2 = {
     type: "input",
     name: "authorName",
     message: "What is your name?"
 }
-const questions = [question1, question2];
+
+const question3 = {
+    type: "input",
+    name: "githubUserName",
+    message: "What is your GitHub username?"
+}
+const questions = [question1, question2, question3];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}

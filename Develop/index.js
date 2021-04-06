@@ -41,7 +41,15 @@ const question4 = {
     name: "authorEmail",
     message: "What is your e-mail address?"
 }
-const questions = [question1, question2, question3, question4];
+
+//question 5: input determines description of the application
+
+const question5 = {
+    type: "input",
+    name: "appDescr",
+    message: "Please give a brief description of the application"
+}
+const questions = [question1, question2, question3, question4, question5];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}

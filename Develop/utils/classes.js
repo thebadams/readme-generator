@@ -25,4 +25,12 @@ class Instructions {
     }
 }
 
-export {ReadmeInfo, Author, Instructions}
+class License {
+    constructor(tName, tBadgeURL, tLinkURL, tContent){
+        this.name = tName,
+        this.badgeURL = tBadgeURL,
+        this.linkURL = tLinkURL,
+        this.content = tContent
+    }
+}
+export {ReadmeInfo, Author, Instructions, License}

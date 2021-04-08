@@ -2,7 +2,7 @@
 import fs from "fs";
 import inquirer from "inquirer";
 import {generateMarkdown} from "./utils/generateMarkdown.js"
-import {ReadmeInfo, Author, Instructions, Description} from "./utils/classes.js"
+import {ReadmeInfo, Author, Instructions, Description, AppInfo} from "./utils/classes.js"
 import {licenses} from "./utils/licenses.js"
 
 
@@ -118,12 +118,33 @@ const questions = [question1, question2, question3, question4, question5, questi
 
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (error)=>{
+        error ? console.error(error) : console.log("Success")
+    })
+}
 
 // TODO: Create a function to initialize app
 function init(questions) {
     inquirer
-        .prompt(questions).then((data)=>console.log(data));
+        .prompt(questions)
+            .then((data)=>{  
+                console.log(data.license)             
+                let author = new Author(data.authorName, data.githubUserName, data.authorEmail);
+                let instructions = new Instructions(data.appInstallation, data.appUsage);
+                let description = new Description(data.appDescr, data.appMotivation, data.appWhy, data.appSolve, data.appLessons);
+                let appInfo = new AppInfo(data.appDeployment, data.appRepo);
+                let readmeInfo = new ReadmeInfo(data.appTitle, author, description, data.appLicense, instructions, appInfo)
+                return readmeInfo
+            })
+            .then((readmeInfo)=>{
+               let markdown =  generateMarkdown(readmeInfo);
+               return markdown;
+            })
+            .then((markdown)=>{
+                writeToFile("testREADME.md", markdown)
+
+            })
 }
 
 // Function call to initialize app

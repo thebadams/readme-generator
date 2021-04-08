@@ -1,3 +1,5 @@
+
+
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {}
@@ -12,9 +14,9 @@ function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(ReadMeInfo) {
-  return `# ${ReadmeInfo.title}
+  return `# ${ReadMeInfo.title}
 ## Description
-${ReadmeInfo.description.description}
+${ReadMeInfo.description.description}
 - ${ReadMeInfo.description.motivation} 
 - ${ReadMeInfo.description.why}
 - ${ReadMeInfo.description.solves}
@@ -36,8 +38,9 @@ If you followed tutorials, include links to those here as well.
 ## License
 [![License: ${ReadMeInfo.license.short}](${ReadMeInfo.license.badgeURL})](${ReadMeInfo.license.linkURL})
 
-${ReadmeInfo.license.content}
+${ReadMeInfo.license.content}
 `;
+
 }
 
 

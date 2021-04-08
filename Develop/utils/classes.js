@@ -1,12 +1,13 @@
 //define classes and export
 
 class ReadmeInfo {
-    constructor(tTitle, tAuthor, tDescr, tLicense, tInstructions){
+    constructor(tTitle, tAuthor, tDescr, tLicense, tInstructions, tAppInfo){
         this.title = tTitle,
         this.author = tAuthor,
         this.description = tDescr,
         this.license = tLicense,
-        this.instructions = tInstructions
+        this.instructions = tInstructions,
+        this.appInfo = tAppInfo
     }
 }
 
@@ -35,6 +36,13 @@ class Description {
     }
 }
 
+class AppInfo {
+    constructor(tDeploymentURL, tRepoURL) {
+        this.deploymentURL = tDeploymentURL,
+        this.repoURL = tRepoURL
+    }
+}
+
 class License {
     constructor(tName, tBadgeURL, tLinkURL, tContent, tValue = this){
         this.name = tName,
@@ -45,4 +53,4 @@ class License {
         this.short = tName
     }
 }
-export {ReadmeInfo, Author, Instructions, License, Description}
+export {ReadmeInfo, Author, Instructions, License, Description, AppInfo}

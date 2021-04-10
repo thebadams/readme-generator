@@ -9,36 +9,6 @@ import {getAuthorInfo, getAppInfo, getAppURLs, getAppInstructions, chooseLicense
 
 
 
-// TODO: Create an array of questions for user input
-//sections: Description, Table of Contents, Installation, Usage, License, Contributing, Tests, Questions
-
-// Project Title: use an input
-//Description: Use a 
-//License: use a list or raw list> what's the difference
-
-//build out questions:
-//question 1: input determines name of application
-
-
-
-//question 3: input determines author's github username
-
-
-//question 4: input determines authors' email address
-
-
-//questions 5-9: determine "Description" of app in readme
-//question 5: input determines description of the applic
-
-
-//create license information choices
-//TODO: build out license objects
-
-
-
-// const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14];
-
-
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (error)=>{

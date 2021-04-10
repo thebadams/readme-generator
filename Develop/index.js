@@ -4,8 +4,8 @@ import inquirer from "inquirer";
 import {generateMarkdown} from "./utils/generateMarkdown.js"
 import {ReadmeInfo, Author, Instructions, Description, AppURLs} from "./utils/classes.js"
 import {licenses} from "./utils/licenses.js"
-import {authorPrompts, appInfoPrompts, appURLPrompts, appInstructionsPrompts} from "./utils/prompt-questions.js"
-import {getAuthorInfo, getAppInfo, getAppURLs, getAppInstructions} from "./utils/prompts.js"
+import {authorPrompts, appInfoPrompts, appURLPrompts, appInstructionsPrompts, prompt_appLicense} from "./utils/prompt-questions.js"
+import {getAuthorInfo, getAppInfo, getAppURLs, getAppInstructions, chooseLicense} from "./utils/prompts.js"
 
 
 
@@ -33,13 +33,7 @@ import {getAuthorInfo, getAppInfo, getAppURLs, getAppInstructions} from "./utils
 
 //create license information choices
 //TODO: build out license objects
-const question12 = {
-    type: "list",
-    name: "appLicense",
-    choices: licenses,
-    default: 0,
-    message: "Please choose a license from these choices." 
-}
+
 
 
 // const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14];
@@ -53,15 +47,17 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
-async function init(authorPrompts, appInfoPrompts, appURLPrompts, appInstructionsPrompts) {
+async function init(authorPrompts, appInfoPrompts, appURLPrompts, appInstructionsPrompts, prompt_appLicense) {
     const authorInfo = await getAuthorInfo(authorPrompts);
     const appInfo = await getAppInfo(appInfoPrompts);
     const appURLs = await getAppURLs(appURLPrompts);
     const appInstructions = await getAppInstructions(appInstructionsPrompts)
+    const appLicense = await chooseLicense(prompt_appLicense)
     console.log("Author Info:", authorInfo)
     console.log("appInfo:", appInfo)
     console.log("appURLs:", appURLs)
-    console.log("appInstructions:", appInstructions);
+    console.log("App Instructions", appInstructions)
+    console.log("License:", appLicense)
     // inquirer
     //     .prompt(questions)
     //         .then((data)=>{  
@@ -84,5 +80,5 @@ async function init(authorPrompts, appInfoPrompts, appURLPrompts, appInstruction
 }
 
 // Function call to initialize app
-init(authorPrompts, appInfoPrompts, appURLPrompts, appInstructionsPrompts);
+init(authorPrompts, appInfoPrompts, appURLPrompts, appInstructionsPrompts, prompt_appLicense);
 // getAuthorInfo(authorPrompts);

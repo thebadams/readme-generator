@@ -1,5 +1,6 @@
 import inquirer from "inquirer"
 import {AppURLs, Author, Description, Instructions} from "./classes.js"
+import { prompt_appLicense } from "./prompt-questions.js"
 
 const getAuthorInfo = async (authorPrompts)=>{
     const data = await inquirer.prompt(authorPrompts)
@@ -20,4 +21,9 @@ const getAppInstructions = async (appInstructionsPrompts)=>{
     const data = await inquirer.prompt(appInstructionsPrompts);
     return new Instructions(data.appInstallation, data.appUsage)
 }
-export {getAuthorInfo, getAppInfo, getAppURLs, getAppInstructions}
+
+const chooseLicense = async (prompt_appLicense)=>{
+    const data = await inquirer.prompt(prompt_appLicense)
+    return data
+}
+export {getAuthorInfo, getAppInfo, getAppURLs, getAppInstructions, chooseLicense}

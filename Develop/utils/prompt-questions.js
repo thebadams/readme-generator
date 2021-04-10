@@ -70,4 +70,18 @@ const prompt_appDeploymentURL = {
 
 const appURLPrompts = [prompt_appRepoURL, prompt_appDeploymentURL]
 
-export {authorPrompts, appInfoPrompts, appURLPrompts}
+const prompt_appInstallation = {
+    type: "editor",
+    name: "appInstallation",
+    message: "Please use the text editor to input the steps that should be taken for installation."
+}
+
+const prompt_appUsage = {
+    type: "editor",
+    name: "appUsage",
+    message: "Please use the text editor to explain the steps that should be taken to use the application."
+}
+
+const appInstructionsPrompts = [prompt_appInstallation, prompt_appUsage]
+
+export {authorPrompts, appInfoPrompts, appURLPrompts, appInstructionsPrompts}

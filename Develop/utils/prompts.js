@@ -1,5 +1,5 @@
 import inquirer from "inquirer"
-import {AppURLs, Author, Description} from "./classes.js"
+import {AppURLs, Author, Description, Instructions} from "./classes.js"
 
 const getAuthorInfo = async (authorPrompts)=>{
     const data = await inquirer.prompt(authorPrompts)
@@ -15,4 +15,9 @@ const getAppURLs = async (appURLPrompts)=>{
     const data = await inquirer.prompt(appURLPrompts);
     return new AppURLs(data.appDeployment, data.appRepo)
 }
-export {getAuthorInfo, getAppInfo, getAppURLs}
+
+const getAppInstructions = async (appInstructionsPrompts)=>{
+    const data = await inquirer.prompt(appInstructionsPrompts);
+    return new Instructions(data.appInstallation, data.appUsage)
+}
+export {getAuthorInfo, getAppInfo, getAppURLs, getAppInstructions}

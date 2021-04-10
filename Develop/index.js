@@ -4,8 +4,8 @@ import inquirer from "inquirer";
 import {generateMarkdown} from "./utils/generateMarkdown.js"
 import {ReadmeInfo, Author, Instructions, Description, AppURLs} from "./utils/classes.js"
 import {licenses} from "./utils/licenses.js"
-import {authorPrompts, appInfoPrompts, appURLPrompts} from "./utils/prompt-questions.js"
-import {getAuthorInfo, getAppInfo, getAppURLs} from "./utils/prompts.js"
+import {authorPrompts, appInfoPrompts, appURLPrompts, appInstructionsPrompts} from "./utils/prompt-questions.js"
+import {getAuthorInfo, getAppInfo, getAppURLs, getAppInstructions} from "./utils/prompts.js"
 
 
 
@@ -28,26 +28,7 @@ import {getAuthorInfo, getAppInfo, getAppURLs} from "./utils/prompts.js"
 
 
 //questions 5-9: determine "Description" of app in readme
-//question 5: input determines description of the application
-
-
-
-
-
-
-
-
-
-
-
-//app deployment and repo information
-
-const question10 = {
-    type: "input",
-    name: "appRepo",
-    message: "Please input the URL for the application's repository."
-}
-
+//question 5: input determines description of the applic
 
 
 //create license information choices
@@ -60,17 +41,6 @@ const question12 = {
     message: "Please choose a license from these choices." 
 }
 
-const question13 = {
-    type: "editor",
-    name: "appInstallation",
-    message: "Please use the text editor to input the steps that should be taken for installation."
-}
-
-const question14 = {
-    type: "editor",
-    name: "appUsage",
-    message: "Please use the text editor to explain the steps that should be taken to use the application."
-}
 
 // const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14];
 
@@ -83,13 +53,15 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
-async function init(authorPrompts, appInfoPrompts, appURLPrompts) {
+async function init(authorPrompts, appInfoPrompts, appURLPrompts, appInstructionsPrompts) {
     const authorInfo = await getAuthorInfo(authorPrompts);
     const appInfo = await getAppInfo(appInfoPrompts);
     const appURLs = await getAppURLs(appURLPrompts);
+    const appInstructions = await getAppInstructions(appInstructionsPrompts)
     console.log("Author Info:", authorInfo)
     console.log("appInfo:", appInfo)
     console.log("appURLs:", appURLs)
+    console.log("appInstructions:", appInstructions);
     // inquirer
     //     .prompt(questions)
     //         .then((data)=>{  
@@ -112,5 +84,5 @@ async function init(authorPrompts, appInfoPrompts, appURLPrompts) {
 }
 
 // Function call to initialize app
-init(authorPrompts, appInfoPrompts, appURLPrompts);
+init(authorPrompts, appInfoPrompts, appURLPrompts, appInstructionsPrompts);
 // getAuthorInfo(authorPrompts);

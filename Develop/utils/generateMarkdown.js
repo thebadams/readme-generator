@@ -39,6 +39,20 @@ function renderUsageInstructions(readmeInfo){
   return `## Usage
     ${readmeInfo.instructions.usage}`
 }
+
+function renderContributionInstructions(readmeInfo){
+  return `## Contribution
+  
+    Contact Me at [${readmeInfo.author.email}](mailto:${readmeInfo.author.email})
+    
+    View My Github at [https://www.github.com/${readmeInfo.author.gitHub}]
+    
+    Visit the Application's Repository [here](${readmeInfo.appURLs.repoURL})
+    
+    Visit the Application's Deployment [here](${readmeInfo.appURLs.deploymentURL})`
+
+    
+}
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(ReadMeInfo) {
   return `# ${ReadMeInfo.title}

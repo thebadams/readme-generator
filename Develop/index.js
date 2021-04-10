@@ -4,8 +4,8 @@ import inquirer from "inquirer";
 import {generateMarkdown} from "./utils/generateMarkdown.js"
 import {ReadmeInfo, Author, Instructions, Description, AppURLs} from "./utils/classes.js"
 import {licenses} from "./utils/licenses.js"
-import {authorPrompts, appInfoPrompts} from "./utils/prompt-questions.js"
-import {getAuthorInfo, getAppInfo} from "./utils/prompts.js"
+import {authorPrompts, appInfoPrompts, appURLPrompts} from "./utils/prompt-questions.js"
+import {getAuthorInfo, getAppInfo, getAppURLs} from "./utils/prompts.js"
 
 
 
@@ -48,11 +48,7 @@ const question10 = {
     message: "Please input the URL for the application's repository."
 }
 
-const question11 = {
-    type: "input",
-    name: "appDeployment",
-    message: "Please input the URL where the application has been deployed."
-}
+
 
 //create license information choices
 //TODO: build out license objects
@@ -87,9 +83,13 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
-async function init(authorPrompts, appInfoPrompts) {
+async function init(authorPrompts, appInfoPrompts, appURLPrompts) {
     const authorInfo = await getAuthorInfo(authorPrompts);
     const appInfo = await getAppInfo(appInfoPrompts);
+    const appURLs = await getAppURLs(appURLPrompts);
+    console.log("Author Info:", authorInfo)
+    console.log("appInfo:", appInfo)
+    console.log("appURLs:", appURLs)
     // inquirer
     //     .prompt(questions)
     //         .then((data)=>{  
@@ -112,5 +112,5 @@ async function init(authorPrompts, appInfoPrompts) {
 }
 
 // Function call to initialize app
-init(authorPrompts, appInfoPrompts);
+init(authorPrompts, appInfoPrompts, appURLPrompts);
 // getAuthorInfo(authorPrompts);

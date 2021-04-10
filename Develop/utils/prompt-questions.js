@@ -56,4 +56,18 @@ const prompt_appLessons = {
 
 const appInfoPrompts = [prompt_appTitle, prompt_appDescr, prompt_appMotivation, prompt_appWhy, prompt_appSolve, prompt_appLessons]
 
-export {authorPrompts, appInfoPrompts}
+const prompt_appRepoURL = {
+    type: "input",
+    name: "appRepo",
+    message: "Please input the URL for the application's repository."
+}
+
+const prompt_appDeploymentURL = {
+    type: "input",
+    name: "appDeployment",
+    message: "Please input the URL where the application has been deployed."
+}
+
+const appURLPrompts = [prompt_appRepoURL, prompt_appDeploymentURL]
+
+export {authorPrompts, appInfoPrompts, appURLPrompts}

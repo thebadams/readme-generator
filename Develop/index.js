@@ -4,6 +4,8 @@ import inquirer from "inquirer";
 import {generateMarkdown} from "./utils/generateMarkdown.js"
 import {ReadmeInfo, Author, Instructions, Description, AppInfo} from "./utils/classes.js"
 import {licenses} from "./utils/licenses.js"
+import {authorPrompts} from "./utils/prompt-questions.js"
+import {getAuthorInfo} from "./utils/prompts.js"
 
 
 
@@ -22,26 +24,13 @@ const question1 = {
     message: "What is the name of your Application?"
 }
 
-//question 2: input determines author's name
-const question2 = {
-    type: "input",
-    name: "authorName",
-    message: "What is your name?"
-}
+
 //question 3: input determines author's github username
-const question3 = {
-    type: "input",
-    name: "githubUserName",
-    message: "What is your GitHub username?"
-}
+
 
 //question 4: input determines authors' email address
 
-const question4 = {
-    type: "input",
-    name: "authorEmail",
-    message: "What is your e-mail address?"
-}
+
 //questions 5-9: determine "Description" of app in readme
 //question 5: input determines description of the application
 
@@ -114,7 +103,7 @@ const question14 = {
     message: "Please use the text editor to explain the steps that should be taken to use the application."
 }
 
-const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14];
+// const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14];
 
 
 // TODO: Create a function to write README file
@@ -125,27 +114,30 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
-function init(questions) {
-    inquirer
-        .prompt(questions)
-            .then((data)=>{  
-                console.log(data.license)             
-                let author = new Author(data.authorName, data.githubUserName, data.authorEmail);
-                let instructions = new Instructions(data.appInstallation, data.appUsage);
-                let description = new Description(data.appDescr, data.appMotivation, data.appWhy, data.appSolve, data.appLessons);
-                let appInfo = new AppInfo(data.appDeployment, data.appRepo);
-                let readmeInfo = new ReadmeInfo(data.appTitle, author, description, data.appLicense, instructions, appInfo)
-                return readmeInfo
-            })
-            .then((readmeInfo)=>{
-               let markdown =  generateMarkdown(readmeInfo);
-               return markdown;
-            })
-            .then((markdown)=>{
-                writeToFile("testREADME.md", markdown)
+async function init(authorPrompts) {
+    const authorInfo = await getAuthorInfo(authorPrompts);
+    console.log(authorInfo);
+    // inquirer
+    //     .prompt(questions)
+    //         .then((data)=>{  
+    //             console.log(data.license)             
+    //             let author = new Author(data.authorName, data.githubUserName, data.authorEmail);
+    //             let instructions = new Instructions(data.appInstallation, data.appUsage);
+    //             let description = new Description(data.appDescr, data.appMotivation, data.appWhy, data.appSolve, data.appLessons);
+    //             let appInfo = new AppInfo(data.appDeployment, data.appRepo);
+    //             let readmeInfo = new ReadmeInfo(data.appTitle, author, description, data.appLicense, instructions, appInfo)
+    //             return readmeInfo
+    //         })
+    //         .then((readmeInfo)=>{
+    //            let markdown =  generateMarkdown(readmeInfo);
+    //            return markdown;
+    //         })
+    //         .then((markdown)=>{
+    //             writeToFile("testREADME.md", markdown)
 
-            })
+    //         })
 }
 
 // Function call to initialize app
-init(questions);
+init(authorPrompts);
+// getAuthorInfo(authorPrompts);

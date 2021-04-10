@@ -2,23 +2,40 @@
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(readmeInfo) {
+async function renderLicenseBadge(readmeInfo) {
   return `![${readmeInfo.license.short}(${readmeInfo.license.badgeURL})`
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(readmeInfo) {
+async function renderLicenseLink(readmeInfo) {
   return `![${readmeInfo.license.short}](${readmeInfo.license.URL})`
+}
+
+async function renderLicenseContent(readmeInfo) {
+  return `${readmeInfo.license.content}`
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(readmeInfo) {
-  return `${readmeInfo.license.content}`
+async function renderLicenseSection(readmeInfo) {
+  const badgeInfo = await renderLicenseBadge(readmeInfo)
+  const licenseLink = await renderLicenseLink(readmeInfo);
+  const licenseContent = await renderLicenseContent(readmeInfo)
+
+  const licenseSection = `##License
+    ${badgeInfo}
+    
+    ${licenseLink}
+    
+    ${licenseContent}
+    
+    ${licenseSection}`
+
+    return licenseSection;
 }
 
-function renderDescription(readmeInfo){
+async function renderDescription(readmeInfo){
   return `# ${readmeInfo.description.title}
     ## Description
     
@@ -30,17 +47,17 @@ function renderDescription(readmeInfo){
 
 }
 
-function renderInstallationInstructions(readmeInfo){
+async function renderInstallationInstructions(readmeInfo){
   return `## Installation
     ${readmeInfo.instructions.installation}`
 }
 
-function renderUsageInstructions(readmeInfo){
+async function renderUsageInstructions(readmeInfo){
   return `## Usage
     ${readmeInfo.instructions.usage}`
 }
 
-function renderContributionInstructions(readmeInfo){
+async function renderContributionInstructions(readmeInfo){
   return `## Contribution
   
     Contact Me at [${readmeInfo.author.email}](mailto:${readmeInfo.author.email})
@@ -53,35 +70,33 @@ function renderContributionInstructions(readmeInfo){
 
     
 }
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(ReadMeInfo) {
-  return `# ${ReadMeInfo.title}
-## Description
-${ReadMeInfo.description.description}
-- ${ReadMeInfo.description.motivation} 
-- ${ReadMeInfo.description.why}
-- ${ReadMeInfo.description.solves}
-- ${ReadMeInfo.description.learned}
-## Table of Contents
-If your README is long, add a table of contents to make it easy for users to find what they need.
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
-## Installation
-${ReadMeInfo.instructions.installation}
-## Usage
-${ReadMeInfo.instructions.usage}
-## Credits
-List your collaborators, if any, with links to their GitHub profiles.
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-If you followed tutorials, include links to those here as well.
-## License
-[![License: ${ReadMeInfo.license.short}](${ReadMeInfo.license.badgeURL})](${ReadMeInfo.license.linkURL})
 
-${ReadMeInfo.license.content}
-`;
+async function renderInstructionSection(readmeInfo){
+  const installationInstructions = await renderInstallationInstructions(readmeInfo)
+  const UsageInstructions = await renderUsageInstructions(readmeInfo)
+  const contributionInstructions = await renderContributionInstructions(readmeInfo)
 
+  const installationSection = `${
+    installationInstructions}
+
+    ${UsageInstructions}
+
+    ${contributionInstructions}`
+
+  return installationSection
+  }
+  
+// TODO: Create a function to generate markdown for README)
+async function generateMarkdown(readmeInfo) {
+  const appDescription = await renderDescription(readmeInfo);
+  const appInstructions = await renderInstructionSection(readmeInfo);
+  const licenseSection = await renderLicenseSection(readmeInfo);
+
+  return `${appDescription}
+  
+  ${appInstructions}
+  
+  ${licenseSection}`
 }
 
 

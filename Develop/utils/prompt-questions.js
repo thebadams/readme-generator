@@ -1,3 +1,5 @@
+import {licenses} from "./licenses.js" 
+
 const prompt_authorName = {
     type: "input",
     name: "authorName",
@@ -84,4 +86,11 @@ const prompt_appUsage = {
 
 const appInstructionsPrompts = [prompt_appInstallation, prompt_appUsage]
 
-export {authorPrompts, appInfoPrompts, appURLPrompts, appInstructionsPrompts}
+const prompt_appLicense = {
+    type: "list",
+    name: "appLicense",
+    choices: licenses,
+    default: 0,
+    message: "Please choose a license from these choices." 
+}
+export {authorPrompts, appInfoPrompts, appURLPrompts, appInstructionsPrompts, prompt_appLicense}

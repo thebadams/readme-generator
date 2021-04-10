@@ -2,10 +2,10 @@
 import fs from "fs";
 import inquirer from "inquirer";
 import {generateMarkdown} from "./utils/generateMarkdown.js"
-import {ReadmeInfo, Author, Instructions, Description, AppInfo} from "./utils/classes.js"
+import {ReadmeInfo, Author, Instructions, Description, AppURLs} from "./utils/classes.js"
 import {licenses} from "./utils/licenses.js"
-import {authorPrompts} from "./utils/prompt-questions.js"
-import {getAuthorInfo} from "./utils/prompts.js"
+import {authorPrompts, appInfoPrompts} from "./utils/prompt-questions.js"
+import {getAuthorInfo, getAppInfo} from "./utils/prompts.js"
 
 
 
@@ -18,11 +18,7 @@ import {getAuthorInfo} from "./utils/prompts.js"
 
 //build out questions:
 //question 1: input determines name of application
-const question1 = {
-    type: "input",
-    name: "appTitle",
-    message: "What is the name of your Application?"
-}
+
 
 
 //question 3: input determines author's github username
@@ -34,35 +30,12 @@ const question1 = {
 //questions 5-9: determine "Description" of app in readme
 //question 5: input determines description of the application
 
-const question5 = {
-    type: "input",
-    name: "appDescr",
-    message: "Please give a brief description of the application"
-}
 
-const question6 = {
-    type: "input",
-    name: "appMotivation",
-    message: "What was your motivation for developing this application?"
-}
 
-const question7 = {
-    type: "input",
-    name: "appWhy",
-    message: "Why did you decide to build this application?"
-}
 
-const question8 = {
-    type: "input",
-    name: "appSolve",
-    message: "What problem did this application aim to solve?"
-}
 
-const question9 = {
-    type: "input",
-    name: "appLessons",
-    message: "What did you learn by developing this application?"
-}
+
+
 
 
 
@@ -114,9 +87,9 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
-async function init(authorPrompts) {
+async function init(authorPrompts, appInfoPrompts) {
     const authorInfo = await getAuthorInfo(authorPrompts);
-    console.log(authorInfo);
+    const appInfo = await getAppInfo(appInfoPrompts);
     // inquirer
     //     .prompt(questions)
     //         .then((data)=>{  
@@ -139,5 +112,5 @@ async function init(authorPrompts) {
 }
 
 // Function call to initialize app
-init(authorPrompts);
+init(authorPrompts, appInfoPrompts);
 // getAuthorInfo(authorPrompts);

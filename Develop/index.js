@@ -10,8 +10,8 @@ import {getAuthorInfo, getAppInfo, getAppURLs, getAppInstructions, chooseLicense
 
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (error)=>{
+async function writeToFile(fileName, data) {
+    return fs.writeFile(fileName, data, (error)=>{
         error ? console.error(error) : console.log("Success")
     })
 }
@@ -23,11 +23,14 @@ async function init(authorPrompts, appInfoPrompts, appURLPrompts, appInstruction
     const appURLs = await getAppURLs(appURLPrompts);
     const appInstructions = await getAppInstructions(appInstructionsPrompts)
     const appLicense = await chooseLicense(prompt_appLicense)
-    console.log("Author Info:", authorInfo)
-    console.log("appInfo:", appInfo)
-    console.log("appURLs:", appURLs)
-    console.log("App Instructions", appInstructions)
-    console.log("License:", appLicense)
+    console.log(appLicense)
+    const readmeInfo = new ReadmeInfo(authorInfo, appInfo, appLicense, appInstructions, appURLs)
+    console.log(readmeInfo.license);
+    const markDown = await generateMarkdown(readmeInfo)
+    const readmeFile = await writeToFile("README.md", markDown)
+
+    return readmeFile
+    
     // inquirer
     //     .prompt(questions)
     //         .then((data)=>{  

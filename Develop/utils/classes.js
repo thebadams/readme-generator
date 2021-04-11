@@ -53,4 +53,13 @@ class License {
         this.short = tName
     }
 }
-export {ReadmeInfo, Author, Instructions, License, Description, AppURLs}
+
+class LicenseInfo{
+    constructor(tName, tBadgeURL, tLinkURL, tContent){
+        this.name = tName,
+        this.badgeURL = tBadgeURL,
+        this.linkURL = tLinkURL,
+        this.content = tContent
+    }
+}
+export {ReadmeInfo, Author, Instructions, License, Description, AppURLs, LicenseInfo}

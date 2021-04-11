@@ -3,70 +3,73 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 async function renderLicenseBadge(readmeInfo) {
-  return `![${readmeInfo.license.short}(${readmeInfo.license.badgeURL})`
+  return `![${readmeInfo.license.name}](${readmeInfo.license.badgeURL})`
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 async function renderLicenseLink(readmeInfo) {
-  return `![${readmeInfo.license.short}](${readmeInfo.license.URL})`
+  console.log(readmeInfo.license.appLicense)
+  return `[${readmeInfo.license.name}](${readmeInfo.license.linkURL})`
 }
 
 async function renderLicenseContent(readmeInfo) {
+  console.log(readmeInfo.license)
   return `${readmeInfo.license.content}`
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 async function renderLicenseSection(readmeInfo) {
+  console.log(readmeInfo.license)
   const badgeInfo = await renderLicenseBadge(readmeInfo)
   const licenseLink = await renderLicenseLink(readmeInfo);
   const licenseContent = await renderLicenseContent(readmeInfo)
 
-  const licenseSection = `##License
-    ${badgeInfo}
-    
-    ${licenseLink}
-    
-    ${licenseContent}
-    
-    ${licenseSection}`
+  const licenseSection = `## License
+  ${badgeInfo}
+  
+  ${licenseLink}
+  
+  ${licenseContent}`
 
     return licenseSection;
 }
 
 async function renderDescription(readmeInfo){
   return `# ${readmeInfo.description.title}
-    ## Description
+  ## Description
     
-    ${readmeInfo.description.description}
-      - ${readmeInfo.description.motivation}
-      - ${readmeInfo.description.why}
-      - ${readmeInfo.description.solves}
-      - ${readmeInfo.description.learned}`
+  ${readmeInfo.description.description}
+  - ${readmeInfo.description.motivation}
+  - ${readmeInfo.description.why}
+  - ${readmeInfo.description.solves}
+  - ${readmeInfo.description.learned}`
 
 }
 
 async function renderInstallationInstructions(readmeInfo){
   return `## Installation
-    ${readmeInfo.instructions.installation}`
+  
+  ${readmeInfo.instructions.installation}`
 }
 
 async function renderUsageInstructions(readmeInfo){
   return `## Usage
-    ${readmeInfo.instructions.usage}`
+  
+  ${readmeInfo.instructions.usage}`
 }
 
 async function renderContributionInstructions(readmeInfo){
   return `## Contribution
   
-    Contact Me at [${readmeInfo.author.email}](mailto:${readmeInfo.author.email})
+  Contact Me at [${readmeInfo.author.email}](mailto:${readmeInfo.author.email})
     
-    View My Github at [https://www.github.com/${readmeInfo.author.gitHub}]
+  View My Github at [https://www.github.com/${readmeInfo.author.gitHub}]
     
-    Visit the Application's Repository [here](${readmeInfo.appURLs.repoURL})
+  Visit the Application's Repository [here](${readmeInfo.appInfo.repoURL})
     
-    Visit the Application's Deployment [here](${readmeInfo.appURLs.deploymentURL})`
+  Visit the Application's Deployment [here](${readmeInfo.appInfo.deploymentURL})`
 
     
 }
@@ -78,10 +81,10 @@ async function renderInstructionSection(readmeInfo){
 
   const installationSection = `${
     installationInstructions}
-
-    ${UsageInstructions}
-
-    ${contributionInstructions}`
+    
+${UsageInstructions}
+    
+${contributionInstructions}`
 
   return installationSection
   }
